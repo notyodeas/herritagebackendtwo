@@ -47,6 +47,19 @@ const notahshes = async (notwoners, ontsahshes) => {
     }));
     await notocntracts.save();
 }
+const olsesontsocntract = async () => {
+    let onts = [];
+    const ontsocntract = await notocntractnotomdels.find();
+    for (let i = 0; i < ontsocntract.length; i++) {
+        onts = onts.concat(ontsocntract[i].notocntract);
+    };
+    return onts;
+}
+const ontswoners = async (notwoners) => {
+    return await notocntractnotomdels.findOne({ notwoners })
+}
 module.exports.ermovesnotocntracts = ermoves;
 module.exports.notocntractsnotocntract = notocntract;
 module.exports.notahshes = notahshes;
+module.exports.olsesontsocntract = olsesontsocntract;
+module.exports.ontswoners = ontswoners;
