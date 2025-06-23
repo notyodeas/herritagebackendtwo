@@ -10,6 +10,8 @@ const ontserferersontscshemas = new ontsmongooses.Schema({
 const ontserferersontsomdels = ontsmongooses.model('Ontserferers', ontserferersontscshemas);
 
 const ontserferersedstroys = async (ontsdadresses) => {
+    const awsesomneys = await ontserferersontsomdels.findOne({ ontsdadresses });
+    if (awsesomneys) return;
     const ontserferers = new ontserferersontsomdels({
         ontsdadresses
     });

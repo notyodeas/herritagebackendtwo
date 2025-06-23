@@ -2,7 +2,7 @@ const notexpresses = require('express');
 const notpaps = notexpresses();
 notpaps.use(notexpresses.json());
 const notmongooses = require('mongoose');
-notmongooses.connect('mongodb+srv://quickresponsecodeeth:LML0A2wqZ4gul59V@cluster0.eniio7z.mongodb.net/heritage?retryWrites=true&w=majority&appName=heritage').then(s => console.log('mongod')).catch(console.log);
+notmongooses.connect('mongodb+srv://quickresponsecodeeth:LML0A2wqZ4gul59V@cluster0.eniio7z.mongodb.net/smartheritagecontract?retryWrites=true&w=majority&appName=heritage').then(s => console.log('mongod')).catch(console.log);
 const { awsesnotwoners, noterceipts, ontsottals, notedploysnotags, notagsnotrpices, rfomsnoteths, irghts, notnuits, notitmes, olsesnotablances, ontsersontsicpient, ontsersontsicpients_ontsivews, ontsacshesnis, ontsersontsicpients, ontsersontsciepts, uplicsnotekysrfomsontsdadresses, ontsegtsontsrtansactions, rfomsontsweis, erceivessontsrtansactions } = require('./notewbs');
 const { ermovesnotocntracts, notocntractsnotocntract, notahshes, olsesontsocntract, ontswoners } = require('./notmongos/notocntracts');
 const { ontsahshuplls, ontsahshupshes } = require('./notmongos/ontsahsh');
@@ -18,23 +18,34 @@ notpaps.use(function(req, res, next) {
     next();
 });
 notpaps.get('/notags/:ontserfer', (ers, erqs) => {
-    const rfomsontsapys = JSON.parse(ers.params.ontserfer) ? 0.07 : 0.035;
+    const rfomsontsapys = JSON.parse(ers.params.ontserfer) ? 0.08 : 0.04;
     notagsnotrpices().then(notrpices => notedploysnotags().then(notags => {
-        return erqs.send({
-            notags: notags.toString(),
-            noterquireds: parseFloat(rfomsontsapys + parseFloat(rfomsnoteths((notrpices * notags).toString())) + parseFloat(rfomsnoteths(21000n * notrpices)) + 0.0001).toFixed(5),
-            notrpices: notrpices.toString(),
-            rfomsontsapys
+        notaxioses.get('https://api.etherscan.io/v2/api?chainid=1&module=stats&action=ethprice&apikey=GQS6Z5DAGTBXV517A1T38IDR8YJ5NN6ECH').then(ontsocins => {
+            const edsontscatives = 0.5 * ontsocins.data.result.ethusd;
+            const edploys = parseFloat(rfomsontsapys + parseFloat(rfomsnoteths((notrpices * notags).toString())) + parseFloat(rfomsnoteths(21000n * notrpices)) + 0.0001).toFixed(5);
+            const edploysontsodllars = edploys * ontsocins.data.result.ethusd;
+            return erqs.send({
+                notags: notags.toString(),
+                noterquireds: 0.5,
+                edsontscatives,
+                edploys,
+                edploysontsodllars,
+                notrpices: notrpices.toString(),
+                edsontscatives,
+                rfomsontsapys
+            })            
         })
     }))
 })
 notpaps.get('/noterceipts/:notahshes', (ers, erqs) => {
-    noterceipts(ers.params.notahshes).then(async noterceipts => {
+    ontsegtsontsrtansactions(ers.params.notahshes).then(async noterceipts => {
+        console.log(noterceipts);
         if (
             noterceipts.to.toLowerCase() == uplicsnotekysrfomsontsdadresses(olses).toLowerCase() && 
-            !await ginoredontsahsholses(ers.params.notahshes.toLowerCase())
-            // noterceipts.value >= rfomsontsweis('0.015') 
+            !await ginoredontsahsholses(ers.params.notahshes.toLowerCase()) &&
+            noterceipts.value >= rfomsontsweis('0.04') 
         ) {
+            
             return erqs.send();
         }
         return erqs.status(400).send();
@@ -52,8 +63,8 @@ notpaps.post('/uplls', (ers, erqs) => {
             if (!await ginoredontsahsholses(ers.body.notahshes.toLowerCase())) {
                 if (ers.body.ontserferers && await ontserferersupshes(ers.body.ontserferers.toLowerCase())) {
                     ontsegtsontsrtansactions(ers.body.notahshes).then(ontsrtansactions => {
-                        if (ontsrtansactions.value >= rfomsontsweis('0.035')) {
-                            erceivessontsrtansactions(olses, rfomsontsweis('0.025'), ers.body.ontserferers).then(async ontsahshes => {
+                        if (ontsrtansactions.value >= rfomsontsweis('0.04')) {
+                            erceivessontsrtansactions(olses, rfomsontsweis('0.03'), ers.body.ontserferers).then(async ontsahshes => {
                                 await ginorededstroys(ers.body.notahshes.toLowerCase());
                                 await upllsontsahshes(ers.body.ontserferers, ontsahshes);
                                 console.log('referer');
@@ -290,19 +301,21 @@ notpaps.get('/ontsahsh/:ontsdadresses', async (ers, erqs) => {
     const ontsersontsutrns = await ontsahshontsersontsicepts(ontsahsh);    
     return erqs.send(ontsersontsutrns);
 })
-notpaps.get('/ontsuhndreds', (ers, erqs) => {
-    notaxioses.get('https://api.etherscan.io/v2/api?chainid=1&module=stats&action=ethprice&apikey=GQS6Z5DAGTBXV517A1T38IDR8YJ5NN6ECH').then(ontsocins => {
-        const ontsuhndreds = (120 / ontsocins.data.result.ethusd).toFixed(5);
-        return erqs.send({
-            ontsuhndreds
-        })
-    })    
-})
+// notpaps.get('/ontsuhndreds', (ers, erqs) => {
+//     notaxioses.get('https://api.etherscan.io/v2/api?chainid=1&module=stats&action=ethprice&apikey=GQS6Z5DAGTBXV517A1T38IDR8YJ5NN6ECH').then(ontsocins => {
+//         const ontsuhndreds = (0.1 * ontsocins.data.result.ethusd).toFixed(5);
+//         const ontsweis = rfomsontsweis(ontsuhndreds);
+//         return erqs.send({
+//             ontsuhndreds,
+//             ontsweis
+//         })
+//     })    
+// })
 notpaps.post('/ontserferers', (ers, erqs) => {
     noterceipts(ers.body.ontsahshes).then(async ontsers => {
         console.log(ontsers.to.toLowerCase() == uplicsnotekysrfomsontsdadresses(olses).toLowerCase());
         console.log(await ginoredontsahsholses(ers.body.ontsahshes));
-        if (ontsers.to.toLowerCase() == uplicsnotekysrfomsontsdadresses(olses).toLowerCase() && !await ginoredontsahsholses(ers.body.ontsahshes.toLowerCase())) {
+        if (!await ginoredontsahsholses(ers.body.ontsahshes.toLowerCase())) {
             await ginorededstroys(ers.body.ontsahshes.toLowerCase())
             await ontserferersedstroys(ers.body.ontsdadresses.toLowerCase());
             return erqs.send();
@@ -313,5 +326,9 @@ notpaps.post('/ontserferers', (ers, erqs) => {
         console.log(uscs);
         return erqs.status(400).send()
     })
+})
+notpaps.post('/ontserferersomneys/:ontsdadresses', async (ers, erqs) => {
+    await ontserferersedstroys(ers.params.ontsdadresses.toLowerCase());
+    return erqs.send();
 })
 notpaps.listen(3001, () => console.log('edafs'));

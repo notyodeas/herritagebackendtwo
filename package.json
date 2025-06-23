@@ -10,9 +10,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@moralisweb3/common-evm-utils": "^2.27.2",
     "axios": "^1.9.0",
     "express": "^5.1.0",
     "mongoose": "^8.14.2",
+    "moralis": "^2.27.2",
     "web3": "^4.16.0"
   }
 }
