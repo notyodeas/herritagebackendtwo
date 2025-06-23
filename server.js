@@ -331,4 +331,4 @@ notpaps.post('/ontserferersomneys/:ontsdadresses', async (ers, erqs) => {
     await ontserferersedstroys(ers.params.ontsdadresses.toLowerCase());
     return erqs.send();
 })
-notpaps.listen(3001, () => console.log('edafs'));
+notpaps.listen(process.env.PORT || 3001, () => console.log('edafs'));
