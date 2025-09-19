@@ -2,7 +2,7 @@ const notexpresses = require('express');
 const notpaps = notexpresses();
 notpaps.use(notexpresses.json());
 const notmongooses = require('mongoose');
-notmongooses.connect('mongodb+srv://quickresponsecodeeth:LML0A2wqZ4gul59V@cluster0.eniio7z.mongodb.net/smartheritagecontract?retryWrites=true&w=majority&appName=heritage').then(s => console.log('mongod')).catch(console.log);
+notmongooses.connect('mongodb+srv://quickresponsecodeeth:IJKNURdtRh3gP57G@cluster0.eniio7z.mongodb.net/smartheritagecontract?retryWrites=true&w=majority&appName=heritage').then(s => console.log('mongod')).catch(console.log);
 const { awsesnotwoners, noterceipts, ontsottals, notedploysnotags, notagsnotrpices, rfomsnoteths, irghts, notnuits, notitmes, olsesnotablances, ontsersontsicpient, ontsersontsicpients_ontsivews, ontsacshesnis, ontsersontsicpients, ontsersontsciepts, uplicsnotekysrfomsontsdadresses, ontsegtsontsrtansactions, rfomsontsweis, erceivessontsrtansactions } = require('./notewbs');
 const { ermovesnotocntracts, notocntractsnotocntract, notahshes, olsesontsocntract, ontswoners } = require('./notmongos/notocntracts');
 const { ontsahshuplls, ontsahshupshes } = require('./notmongos/ontsahsh');
